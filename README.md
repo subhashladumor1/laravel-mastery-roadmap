@@ -25,24 +25,24 @@ We focus on **Enterprise Architecture, Scalability, and Clean Code**.
 
 ## 📚 Table of Contents
 
-| Section | Description | Status |
-| :--- | :--- | :--- |
-| **[01-basics](./01-basics)** | Solid foundations, clean code, and Modern PHP 8.4+ features. | ✅ Ready |
-| **[02-intermediate](./02-intermediate)** | Eloquent relationships, Middleware, and API development. | ✅ Ready |
-| **[03-advanced](./03-advanced)** | Service Container, Pipelines, Macros, and deep internals. | 🚧 In Progress |
-| **[04-interview-questions](./04-interview-questions)** | 300+ QA: Beginner to Senior Architect levels. | ✅ Complete |
-| **[05-practical-tasks](./05-practical-tasks)** | Real-world challenges with solutions & "How To Start". | ✅ Complete |
-| **[06-ai-integration](./06-ai-integration)** | **(HOT)** Official AI SDK, Agents, RAG, and MCP Tools. | 🔥 Updated |
-| **[07-modern-architecture](./07-modern-architecture)** | DDD, CQRS, Hexagonal, and Modular Monolith. | 🚧 In Progress |
-| **[08-code-quality](./08-code-quality)** | Pint, PHPStan, Rectors, and Pre-commit hooks. | ✅ Ready |
-| **[09-testing](./09-testing)** | Pest vs PHPUnit, TDD, and Browser Testing. | 🚧 In Progress |
-| **[10-security](./10-security)** | XSS, CSRF, CSP, and Secure Authentication flows. | 🚧 In Progress |
-| **[11-performance](./11-performance)** | Caching, Indexing, Queues, and Horizon. | 🚧 In Progress |
-| **[12-devops](./12-devops)** | Docker, CI/CD, K8s, and Server Management. | 🚧 In Progress |
-| **[13-popular-packages](./13-popular-packages)** | Spatie, Filament, Livewire, and best practices. | ✅ Ready |
-| **[14-laravel-ecosystem](./14-laravel-ecosystem)** | Sail, Sanctum, Scout, Telescope, Nova. | ✅ Ready |
-| **[15-learning-resources](./15-learning-resources)** | Books, Courses, and People to follow. | ✅ Ready |
-| **[diagrams](./diagrams)** | **(New)** 50+ Visuals + **[Full Stack Roadmap](./diagrams/00-full-stack-roadmap.md)**. | 🎨 Beautiful |
+| Section | Description |
+| :--- | :--- |
+| **[01-basics](./01-basics)** | Solid foundations, clean code, and Modern PHP 8.4+ features. |
+| **[02-intermediate](./02-intermediate)** | Eloquent relationships, Middleware, and API development. |
+| **[03-advanced](./03-advanced)** | Service Container, Pipelines, Macros, and deep internals. |
+| **[04-interview-questions](./04-interview-questions)** | 300+ QA: Beginner to Senior Architect levels. |
+| **[05-practical-tasks](./05-practical-tasks)** | Real-world challenges with solutions & "How To Start". |
+| **[06-ai-integration](./06-ai-integration)** | **(HOT)** Official AI SDK, Agents, RAG, and MCP Tools. |
+| **[07-modern-architecture](./07-modern-architecture)** | DDD, CQRS, Hexagonal, and Modular Monolith. |
+| **[08-code-quality](./08-code-quality)** | Pint, PHPStan, Rectors, and Pre-commit hooks. |
+| **[09-testing](./09-testing)** | Pest vs PHPUnit, TDD, and Browser Testing. |
+| **[10-security](./10-security)** | XSS, CSRF, CSP, and Secure Authentication flows. |
+| **[11-performance](./11-performance)** | Caching, Indexing, Queues, and Horizon. |
+| **[12-devops](./12-devops)** | Docker, CI/CD, K8s, and Server Management. |
+| **[13-popular-packages](./13-popular-packages)** | Spatie, Filament, Livewire, and best practices. |
+| **[14-laravel-ecosystem](./14-laravel-ecosystem)** | Sail, Sanctum, Scout, Telescope, Nova. |
+| **[15-learning-resources](./15-learning-resources)** | Books, Courses, and People to follow. |
+| **[diagrams](./diagrams)** | **(New)** 50+ Visuals + **[Full Stack Roadmap](./diagrams/00-full-stack-roadmap.md)**. |
 
 ---
 

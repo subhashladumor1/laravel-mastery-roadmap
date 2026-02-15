@@ -29,8 +29,8 @@ The application stays in RAM.
 
 ```mermaid
 graph TD
-    Start[Worker Starts (php artisan octane:start)] --> Boot[Bootstrap Laravel ONCE]
-    Boot --> RAM[Keep in Memory (Swoole Worker)]
+    Start[Worker Starts php artisan octane:start] --> Boot[Bootstrap Laravel ONCE]
+    Boot --> RAM[Keep in Memory Swoole Worker]
     
     RAM --> Loop{Request Loop}
     
@@ -53,12 +53,12 @@ Wait, globals leak!
 ```mermaid
 graph LR
     Worker --> Request[Handle Request]
-    Request --> Static[Static Property $count++]
+    Request --> Static[Static Property count++]
     Request --> Single[Singleton Service]
     
     Response[End Request] --> Clean[Run Terminating Callbacks]
     Clean --> Flush[Octane flushes known services]
-    Flush --> Reset[$count = 0]
+    Flush --> Reset[count = 0]
     Reset --> Ready[Worker Ready for Next]
 ```
 
@@ -67,7 +67,7 @@ Running multiple tasks in parallel without blocking.
 
 ```mermaid
 graph TD
-    Request -->|Octane::concurrently| Start
+    Request -->|Octane concurrently| Start
     Start --> TaskA[Fetch Stripe]
     Start --> TaskB[Fetch GitHub]
     Start --> TaskC[Fetch Slack]
@@ -76,6 +76,6 @@ graph TD
     TaskB --> ResultB
     TaskC --> ResultC
     
-    ResultA & ResultB & ResultC --> Combine[Return [A, B, C]]
+    ResultA & ResultB & ResultC --> Combine[Return A, B, C]
     Combine --> Response
 ```

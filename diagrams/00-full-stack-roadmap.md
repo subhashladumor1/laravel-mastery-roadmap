@@ -22,8 +22,8 @@ graph TD
 The framework fundamentals.
 ```mermaid
 graph TD
-    Basics --> Routing[Routing (web.php)]
-    Basics --> MVC[Controllers & Views (Blade)]
+    Basics[Basics] --> Routing[Routing web.php]
+    Basics --> MVC[Controllers & Views Blade]
     Basics --> DB[Migrations & Eloquent Models]
     Basics --> Valid[Form Requests & Validation]
 ```
@@ -41,7 +41,7 @@ graph TD
 Stop writing N+1 queries.
 ```mermaid
 graph LR
-    DB --> Rel[Relationships: OneToMany, Polymorphic]
+    DB[Database] --> Rel[Relationships: OneToMany, Polymorphic]
     DB --> Index[Indexing & Performance]
     DB --> Trans[Transactions & Locking]
     DB --> Fac[Factories & Seeders]
@@ -53,17 +53,17 @@ Pick ONE path and master it. Don't learn everything.
 **Path A: TALL Stack (Simplicity)**
 ```mermaid
 graph TD
-    TALL --> Tail[Tailwind CSS]
+    TALL[TALL Stack] --> Tail[Tailwind CSS]
     TALL --> Alpine[Alpine.js]
-    TALL --> Live[Livewire 3 (Interactivity)]
-    TALL --> Fila[Filament PHP (Admin Panel)]
+    TALL --> Live[Livewire 3 Interactivity]
+    TALL --> Fila[Filament PHP Admin Panel]
 ```
 
 **Path B: VILT/I Stack (SPA Power)**
 ```mermaid
 graph TD
-    SPA --> Vue[Vue.js or React]
-    SPA --> Inertia[Inertia.js (The Glue)]
+    SPA[SPA] --> Vue[Vue.js or React]
+    SPA --> Inertia[Inertia.js The Glue]
     SPA --> State[Pinia / Zustand]
     SPA --> SSR[Server Side Rendering]
 ```
@@ -81,9 +81,9 @@ graph TD
 Move logic out of Controllers.
 ```mermaid
 graph TD
-    Arch --> Service[Service Classes / Actions]
+    Arch[Architecture] --> Service[Service Classes / Actions]
     Arch --> Events[Events & Listeners]
-    Arch --> Jobs[Queue Jobs & Workers (Redis)]
+    Arch --> Jobs[Queue Jobs & Workers Redis]
     Arch --> Pattern[Repository / Strategy Pattern]
     Arch --> DTO[Data Transfer Objects]
 ```
@@ -92,10 +92,10 @@ graph TD
 Sleep well at night.
 ```mermaid
 graph LR
-    Test --> Pest[Pest PHP (Unit/Feature)]
-    Test --> Dusk[Laravel Dusk (Browser)]
+    Test[Testing] --> Pest[Pest PHP Unit/Feature]
+    Test --> Dusk[Laravel Dusk Browser]
     Test --> Mock[Mocking External APIs]
-    Test --> CI[GitHub Actions (CI/CD)]
+    Test --> CI[GitHub Actions CI/CD]
 ```
 
 **Projects to Build:**
@@ -111,9 +111,9 @@ graph LR
 Build intelligent apps.
 ```mermaid
 graph TD
-    AI --> SDK[Laravel AI SDK (Agents)]
+    AI[AI Engineering] --> SDK[Laravel AI SDK Agents]
     AI --> RAG[RAG & Vector Databases]
-    AI --> MCP[MCP Servers (Boost)]
+    AI --> MCP[MCP Servers Boost]
     AI --> Fine[Fine-tuning Models]
 ```
 
@@ -121,10 +121,10 @@ graph TD
 Own the deployment pipeline.
 ```mermaid
 graph TD
-    Ops --> Docker[Docker & Sail]
+    Ops[DevOps] --> Docker[Docker & Sail]
     Ops --> Server[Nginx, PHP-FPM, Supervisor]
-    Ops --> Cloud[AWS (S3, SQS, RDS)]
-    Ops --> K8s[Kubernetes / Vapor (Serverless)]
+    Ops --> Cloud[AWS S3, SQS, RDS]
+    Ops --> K8s[Kubernetes / Vapor Serverless]
 ```
 
 ### 4.3 Advanced Performance

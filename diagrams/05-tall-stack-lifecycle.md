@@ -12,7 +12,7 @@ Livewire renders the initial HTML on the server, just like a standard Blade view
 graph TD
     User[Browser Request /dashboard] --> Laravel[Laravel Router]
     Laravel --> Controller[DashboardController]
-    Controller --> Component[Livewire Component (mount)]
+    Controller --> Component[Livewire Component mount]
     Component --> Blade[Render Blade View]
     Blade --> User[Return HTML + Initial State used by Alpine]
 ```
@@ -22,10 +22,10 @@ When a user types or clicks, Livewire sends an AJAX request.
 
 ```mermaid
 graph LR
-    User[User Clicks Button] --> JS[Livewire JS (Intercept)]
+    User[User Clicks Button] --> JS[Livewire JS Intercept]
     JS -->|Fetch| Server[Server Endpoint /livewire/message]
     Server -->|Hydrate| Component[Hydrate PHP Component]
-    Component -->|Action| Method[Run public function save()]
+    Component -->|Action| Method[Run public function save]
     Method -->|Dehydrate| Response[Return HTML Diff + New State]
     Response -->|Morph| DOM[Alpine/Morphdom Updates DOM]
 ```
@@ -35,8 +35,8 @@ Sharing state between PHP and JavaScript without network requests (for some part
 
 ```mermaid
 graph TD
-    PHP[Livewire $count] <-->|@entangle| Alpine[Alpine x-data { count }]
-    Alpine -->|Immediate Update| UI[Update <span> instantly]
+    PHP[Livewire count] <-->|@entangle| Alpine[Alpine x-data count]
+    Alpine -->|Immediate Update| UI[Update span instantly]
     Note[Network Request happens in background if needed]
 ```
 
@@ -47,5 +47,5 @@ Listening for server events.
 graph LR
     Server[Event Fired: OrderShipped] -->|Pusher/Reverb| WebSocket
     WebSocket -->|Listen| Livewire[Livewire Component]
-    Livewire -->|Function| Refresh[$this->refresh()]
+    Livewire -->|Function| Refresh[this->refresh]
 ```

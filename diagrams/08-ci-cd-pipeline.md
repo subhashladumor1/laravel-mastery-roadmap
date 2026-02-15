@@ -21,10 +21,10 @@ Automated checks to ensure quality.
 ```mermaid
 graph LR
     Job1 --> Lint[Run Pint / PHP-CS-Fixer]
-    Lint -->|Pass| Static[Run PHPStan (Static Analysis)]
+    Lint -->|Pass| Static[Run PHPStan Static Analysis]
     Static -->|Pass| Test[Run Pest/PHPUnit Tests]
-    Test -->|Fail| Notification[Notify Slack/Email (Failure)]
-    Test -->|Pass| Build[Build Frontend (NPM Run Build)]
+    Test -->|Fail| Notification[Notify Slack/Email Failure]
+    Test -->|Pass| Build[Build Frontend NPM Run Build]
     Build -->|Artifact| Deploy[Ready to Deploy]
 ```
 
@@ -48,8 +48,8 @@ Handling schema changes without locking.
 ```mermaid
 graph LR
     Step1[Old Code Running] -->|Deploy Start| DB[Database]
-    DB --> Alter[ADD COLUMN (Allow NULL)] -.- Note[Safe!]
+    DB --> Alter[ADD COLUMN Allow NULL] -.- Note[Safe!]
     Alter -->|Code Switch| Step2[New Code Uses New Column]
-    Step2 --> Cleanup[DROP COLUMN (Old)]
+    Step2 --> Cleanup[DROP COLUMN Old]
     Cleanup --> Done
 ```

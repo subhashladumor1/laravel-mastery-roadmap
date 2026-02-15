@@ -12,8 +12,9 @@ Here we discuss creating **Middleware**, **Event Listeners**, and **Custom Servi
 | :--- | :--- | :--- |
 | **[01-middleware-lifecycle.md](./01-middleware-lifecycle.md)** | Before vs After Middleware. Terminable Middleware. | 🟠 Medium |
 | **[02-route-binding.md](./02-route-binding.md)** | Customizing `Route::model()`, Slugs, and Scoping. | 🟢 Basic |
-| **[03-eloquent-relationships.md](./03-eloquent-relationships.md)** | Polymorphic Many-to-Many? `morphMap`? We cover it. | 🟠 Medium |
+| **[03-eloquent-relationships.md](./03-eloquent-relationships.md)** | **Complete Guide**: HasOneThrough, Polymorphic, Optimizations. | 🔴 Hard |
 | **[04-api-resources.md](./04-api-resources.md)** | Transforming Models to JSON properly (hateoas). | 🟢 Basic |
+| **[05-scopes-accessors.md](./05-scopes-accessors.md)** | **Scopes & Attributes**: Encapsulate logic cleanly. | 🟠 Medium |
 
 ---
 

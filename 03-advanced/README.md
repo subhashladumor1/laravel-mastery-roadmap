@@ -13,6 +13,8 @@
 | **[02-pipelines.md](./02-pipelines.md)** | Chain-of-responsibility pattern for complex workflows. | 🔴 Hard |
 | **[03-service-providers.md](./03-service-providers.md)** | Bootstrapping services correctly. Deferred vs Eager. | 🔴 Hard |
 | **[04-custom-drivers.md](./04-custom-drivers.md)** | Building custom Cache, Session, or Auth drivers. | 🔴 Hard |
+| **[05-eloquent-performance.md](./05-eloquent-performance.md)** | **Optimization**: Chunk, Cursor, Subqueries, Raw SQL. | 🔴 Hard |
+| **[06-container-facades.md](./06-container-facades.md)** | **Internal Deep Dive**: How DI and Facades *actually* work. | 🔴 Hard |
 
 ---
 

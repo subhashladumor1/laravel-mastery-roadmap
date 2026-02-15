@@ -13,6 +13,9 @@
 | **[02-clean-controllers.md](./02-clean-controllers.md)** | Keeping controllers skinny. Single Action Controllers. | 🟢 Basic |
 | **[03-request-validation.md](./03-request-validation.md)** | Form Requests vs Inline Validation. | 🟢 Basic |
 | **[04-dependency-injection.md](./04-dependency-injection.md)** | Why `new Class()` is evil in Laravel. | 🟠 Medium |
+| **[05-routing-middleware.md](./05-routing-middleware.md)** | **Routing**: Groups, Names, and Route Model Binding. | 🟢 Basic |
+| **[06-eloquent-migrations.md](./06-eloquent-migrations.md)** | **DB**: Migrations, Factories, and Mass Assignment. | 🟢 Basic |
+| **[07-views-blade.md](./07-views-blade.md)** | **Frontend**: Components (`x-alert`) vs Legacy Layouts. | 🟢 Basic |
 
 ---
 

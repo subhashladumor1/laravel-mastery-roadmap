@@ -12,7 +12,7 @@ When visiting `/dashboard`.
 graph TD
     User[Browser Requests /dashboard] --> Laravel[Laravel Router]
     Laravel --> Controller[DashboardController]
-    Controller --> Inertia[Returns Inertia::render('Dashboard')]
+    Controller --> Inertia[Returns Inertia::render Dashboard]
     Inertia --> JSON[Combines Props + View Layout]
     JSON --> Blade[app.blade.php + Initial Props Data]
     Blade --> Start[Hydrate Vue application]
@@ -27,7 +27,7 @@ graph LR
     User[Click Link] --> InertiaJS[Inertia.js Intercepts]
     InertiaJS -->|AJAX XHR| Server[Server Endpoint /users]
     Server -->|Detect Inertia| Controller[UsersController]
-    Controller -->|Return JSON| InertiaJS[Receive Props { users: [...] }]
+    Controller -->|Return JSON| InertiaJS[Receive Props users]
     InertiaJS -->|Swap Component| Vue[Replace Dashboard.vue with Users.vue]
     Note[No Full Page Reload!]
 ```
@@ -37,7 +37,7 @@ When fetching specific data (e.g., Lazy Loading).
 
 ```mermaid
 graph TD
-    Vue[mounted()] --> Fetch[Inertia.reload({ only: ['stats'] })]
+    Vue[mounted] --> Fetch[Inertia.reload only: stats]
     Fetch -->|Request| Server
     Server -->|Compute| Stats[Only Compute Stats]
     Server -->|Response| JSON[Return Only Stats]
@@ -50,7 +50,7 @@ Middleware handling Auth/Flash messages.
 ```mermaid
 graph LR
     Request --> Middleware[HandleInertiaRequests]
-    Middleware --> global[Define 'auth.user' & 'flash']
+    Middleware --> global[Define auth.user & flash]
     Middleware --> Controller[Specific Page Props]
-    Controller --> Response[Merged Object { auth, flash, posts }]
+    Controller --> Response[Merged Object auth, flash, posts]
 ```
