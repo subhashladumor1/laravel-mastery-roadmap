@@ -9,15 +9,15 @@ graph TD
     UserCode[User Controller: @inject UserService] -->|app()| Container[Service Container]
     
     subgraph Container Resolution
-        Container --> Bind{Is Bound?}
+        Container --> Bind[Is Bound?]
         
         Bind -->|Yes| Constructor[Fetch Concrete Class via Binding]
         Bind -->|No| Reflection[Use Reflection (Auto Wiring)]
         
-        Reflection --> Params{Has Constructor?}
+        Reflection --> Params[Has Constructor?]
         
         Params -->|No| Create[Create Instance (new UserService)]
-        Params -->|Yes| Deps{Dependencies?}
+        Params -->|Yes| Deps[Dependencies?]
         
         Deps -->|Yes| Recursive[Resolve Dependencies Recursively]
         Recursive -->|For Each| Container

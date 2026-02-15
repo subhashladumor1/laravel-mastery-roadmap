@@ -14,8 +14,8 @@ graph TD
     end
     
     subgraph Storage (Queue)
-        Push --> Redis{Redis / Database}
-        Redis -->|Wait| Pending{Pending Jobs List}
+        Push --> Redis[Redis / Database]
+        Redis -->|Wait| Pending[Pending Jobs List]
     end
     
     subgraph Consumer (Worker)
@@ -25,9 +25,9 @@ graph TD
         Deserialize -->|Execute| Handler[SendEmail->handle()]
         
         subgraph Outcome
-            Handler --> Success{Success?}
+            Handler --> Success[Success?]
             Success -->|Yes| Complete[Delete Job from Queue]
-            Success -->|No| FailChecks{Tries < Retries?}
+            Success -->|No| FailChecks[Tries < Retries?]
             
             FailChecks -->|Yes| Re-Queue[Release back to Redis (with delay)]
             FailChecks -->|No| FailTable[Insert into Failed Jobs Table]

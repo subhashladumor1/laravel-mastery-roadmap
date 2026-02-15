@@ -24,8 +24,8 @@ graph LR
 ```mermaid
 graph TD
     App[Bootstrap/App.php] -->|Register| Provider[Service Provider]
-    Provider -->|bind('mailer', ...)| Container
-    Controller -->|request('mailer')| Container
+    Provider -->|bind 'mailer'| Container
+    Controller -->|request 'mailer'| Container
     Container -->|return new Mailer| Controller
 ```
 
@@ -75,8 +75,8 @@ graph TD
 ### 7. Exception Handling Flow
 ```mermaid
 graph TD
-    Error[Exception Thrown] --> Handler[App\Exceptions\Handler]
-    Handler --> Report{Report?}
+    Error[Exception Thrown] --> Handler[App Exceptions Handler]
+    Handler --> Report[Report?]
     Report -->|Yes| Log[Log / Sentry]
     Report -->|No| Render
     Render --> Resp[HTTP Response / View]
@@ -174,7 +174,7 @@ graph LR
 graph TD
     Start[Begin Transaction] --> Op1[Debit User A]
     Op1 --> Op2[Credit User B]
-    Op2 --> Check{Success?}
+    Op2 --> Check[Success?]
     Check -->|Yes| Commit[COMMIT]
     Check -->|No| Rollback[ROLLBACK]
 ```
@@ -186,7 +186,7 @@ graph TD
 ### 17. Authentication Guard Flow
 ```mermaid
 graph TD
-    Req[Request] --> Guard[Auth Guard (Session)]
+    Req[Request] --> Guard[Auth Guard Session]
     Guard --> Check[Check Session ID]
     Check -->|Valid| Provider[User Provider]
     Provider -->|ID| DB[Fetch User]
@@ -196,7 +196,7 @@ graph TD
 ### 18. CSRF Protection
 ```mermaid
 graph LR
-    Form[HTML Form] -->|Hidden Input| Token[@csrf Token]
+    Form[HTML Form] -->|Hidden Input| Token[csrf Token]
     Token --> Middleware[VerifyCsrfToken]
     Middleware -->|Match| Session[Session Token]
     Session -->|Success| Controller
@@ -214,9 +214,9 @@ graph LR
 ### 20. Gate/Policy Authorization
 ```mermaid
 graph TD
-    User -->|can('update', $post)| Gate
-    Gate --> Policy[PostPolicy::update]
-    Policy --> Logic{User->id == Post->user_id?}
+    User -->|can 'update', post| Gate
+    Gate --> Policy[PostPolicy update]
+    Policy --> Logic[User id == Post user_id?]
     Logic -->|True| Allow
     Logic -->|False| Deny[403 Forbidden]
 ```
@@ -225,7 +225,7 @@ graph TD
 ```mermaid
 graph TD
     Browser -->|Login| API
-    API -->|Set Cookie| Cookie[laravel_session (HttpOnly)]
+    API -->|Set Cookie| Cookie[laravel_session HttpOnly]
     Browser -->|Next Req| Middleware[EnsureFrontendRequestsAreStateful]
     Middleware -->|Decrypt| Cookie
     Cookie -->|Auth| User
@@ -246,7 +246,7 @@ graph LR
 ### 23. Job Dispatching
 ```mermaid
 graph LR
-    Code[dispatch(Job)] --> Bus[Command Bus]
+    Code[dispatch Job] --> Bus[Command Bus]
     Bus --> Queue[Queue Manager]
     Queue -->|Serialize| Payload[JSON Payload]
     Payload --> Driver[Redis/SQS]
@@ -274,9 +274,9 @@ graph LR
 ### 26. Task Scheduling
 ```mermaid
 graph TD
-    Timer[Minute Ticker] --> Schedule[Console\Kernel]
+    Timer[Minute Ticker] --> Schedule[Console Kernel]
     Schedule --> Tasks[Defined Tasks]
-    Tasks -->|Filter| Due{Is Due?}
+    Tasks -->|Filter| Due[Is Due?]
     Due -->|Yes| Process[Run in Background]
 ```
 
@@ -293,7 +293,7 @@ graph LR
 ### 28. Notification Channels
 ```mermaid
 graph TD
-    Notify[User->notify(InvoicePaid)] --> Channel{On Demand?}
+    Notify[User->notify InvoicePaid] --> Channel[On Demand?]
     Channel -->|Mail| SMTP
     Channel -->|Slack| Webhook
     Channel -->|Database| Table[notifications table]
@@ -382,16 +382,16 @@ graph LR
 ### 37. Singleton (Container)
 ```mermaid
 graph TD
-    Call1[app('db')] --> Instance
-    Call2[app('db')] --> Instance
-    Call3[app('db')] --> Instance
+    Call1[app 'db'] --> Instance
+    Call2[app 'db'] --> Instance
+    Call3[app 'db'] --> Instance
     Note[One Object in Memory]
 ```
 
 ### 38. Factory Method
 ```mermaid
 graph LR
-    Code -->|Notification::send()| Manager[ChannelManager]
+    Code -->|Notification send| Manager[ChannelManager]
     Manager -->|createDriver| Driver[SpecificDriver]
 ```
 
@@ -407,8 +407,8 @@ graph LR
 ```mermaid
 graph LR
     Obj[User Object] -->|has| Data[Properties]
-    Obj -->|has| Save[save() method]
-    Obj -->|has| Delete[delete() method]
+    Obj -->|has| Save[save method]
+    Obj -->|has| Delete[delete method]
     Note[Data + Behavior Mixed]
 ```
 
@@ -440,7 +440,7 @@ graph TD
 ### 43. CI/CD Pipeline
 ```mermaid
 graph LR
-    Push --> Test[Run Tests (Pest)]
+    Push --> Test[Run Tests Pest]
     Test -->|Pass| Lint[Run Pint/Stan]
     Lint -->|Pass| Build[Build Assets]
     Build -->|Pass| Deploy[Deploy to Prod]
@@ -461,8 +461,8 @@ graph TD
 ### 45. Blue/Green Deployment
 ```mermaid
 graph TD
-    LB -->|Traffic| Blue[Blue (Current)]
-    Green[Green (New)] -->|Test| QA
+    LB -->|Traffic| Blue[Blue Current]
+    Green[Green New] -->|Test| QA
     Note[Switch LB to Green]
     LB -->|Traffic| Green
 ```
@@ -471,7 +471,7 @@ graph TD
 ```mermaid
 graph LR
     Req --> API[API Gateway]
-    API --> Lambda[Lambda Function (PHP)]
+    API --> Lambda[Lambda Function PHP]
     Lambda --> RDS[RDS Proxy]
     Lambda --> S3[Storage]
     Lambda --> SQS[Queue]
@@ -480,7 +480,7 @@ graph LR
 ### 47. Cache Aside Strategy
 ```mermaid
 graph TD
-    Req --> Cache{In Cache?}
+    Req --> Cache[In Cache?]
     Cache -->|Yes| Return
     Cache -->|No| DB[Query DB]
     DB --> Save[Save to Cache]
