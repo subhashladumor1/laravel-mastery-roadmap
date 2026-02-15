@@ -10,11 +10,11 @@ Livewire renders the initial HTML on the server, just like a standard Blade view
 
 ```mermaid
 graph TD
-    User[Browser Request /dashboard] --> Laravel[Laravel Router]
+    User[Browser Request dashboard] --> Laravel[Laravel Router]
     Laravel --> Controller[DashboardController]
     Controller --> Component[Livewire Component mount]
     Component --> Blade[Render Blade View]
-    Blade --> User[Return HTML + Initial State used by Alpine]
+    Blade --> User[Return HTML + Initial State for Alpine]
 ```
 
 ## 🔄 2. The Lifecycle (User Interaction)
@@ -23,11 +23,11 @@ When a user types or clicks, Livewire sends an AJAX request.
 ```mermaid
 graph LR
     User[User Clicks Button] --> JS[Livewire JS Intercept]
-    JS -->|Fetch| Server[Server Endpoint /livewire/message]
+    JS -->|Fetch| Server[Server Endpoint message]
     Server -->|Hydrate| Component[Hydrate PHP Component]
     Component -->|Action| Method[Run public function save]
     Method -->|Dehydrate| Response[Return HTML Diff + New State]
-    Response -->|Morph| DOM[Alpine/Morphdom Updates DOM]
+    Response -->|Morph| DOM[Alpine Morphdom Updates DOM]
 ```
 
 ## 🤝 3. Alpine.js Integration (Entangle)
@@ -35,9 +35,9 @@ Sharing state between PHP and JavaScript without network requests (for some part
 
 ```mermaid
 graph TD
-    PHP[Livewire count] <-->|@entangle| Alpine[Alpine x-data count]
+    PHP[Livewire count] <-->|entangle| Alpine[Alpine x-data count]
     Alpine -->|Immediate Update| UI[Update span instantly]
-    Note[Network Request happens in background if needed]
+    Note[Network Request in background]
 ```
 
 ## ⚡ 4. Real-Time Broadcasting (Echo)
@@ -45,7 +45,7 @@ Listening for server events.
 
 ```mermaid
 graph LR
-    Server[Event Fired: OrderShipped] -->|Pusher/Reverb| WebSocket
+    Server[Event Fired OrderShipped] -->|Pusher Reverb| WebSocket
     WebSocket -->|Listen| Livewire[Livewire Component]
-    Livewire -->|Function| Refresh[this->refresh]
+    Livewire -->|Function| Refresh[this refresh]
 ```

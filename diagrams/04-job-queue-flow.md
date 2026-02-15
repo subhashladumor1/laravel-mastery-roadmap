@@ -6,30 +6,30 @@ From producer (Controller) to Consumer (Worker).
 
 ```mermaid
 graph TD
-    UserCode[User Controller: dispatch(SendEmail)] -->|Serialize Job| AppCode[Job Object]
+    UserCode[User Controller dispatch SendEmail] -->|Serialize Job| AppCode[Job Object]
     
     subgraph Producer (Request)
-        AppCode --> Connect[Database/Redis Connection]
-        Connect --> Push[Push to 'default' Queue]
+        AppCode --> Connect[Database Redis Connection]
+        Connect --> Push[Push to default Queue]
     end
     
     subgraph Storage (Queue)
-        Push --> Redis[Redis / Database]
+        Push --> Redis[Redis Database]
         Redis -->|Wait| Pending[Pending Jobs List]
     end
     
     subgraph Consumer (Worker)
-        Redis -->|Pop (BLPOP)| Worker[php artisan queue:work]
+        Redis -->|Pop BLPOP| Worker[php artisan queue:work]
         Worker --> Deserialize[Unserialize Job Object]
         
-        Deserialize -->|Execute| Handler[SendEmail->handle()]
+        Deserialize -->|Execute| Handler[SendEmail handle]
         
         subgraph Outcome
             Handler --> Success[Success?]
             Success -->|Yes| Complete[Delete Job from Queue]
-            Success -->|No| FailChecks[Tries < Retries?]
+            Success -->|No| FailChecks[Tries less than Retries?]
             
-            FailChecks -->|Yes| Re-Queue[Release back to Redis (with delay)]
+            FailChecks -->|Yes| Re-Queue[Release back to Redis with delay]
             FailChecks -->|No| FailTable[Insert into Failed Jobs Table]
         end
     end

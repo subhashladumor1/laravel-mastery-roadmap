@@ -23,9 +23,9 @@ graph LR
 ### 2. Service Container Binding
 ```mermaid
 graph TD
-    App[Bootstrap/App.php] -->|Register| Provider[Service Provider]
-    Provider -->|bind 'mailer'| Container
-    Controller -->|request 'mailer'| Container
+    App[Bootstrap App.php] -->|Register| Provider[Service Provider]
+    Provider -->|bind mailer| Container
+    Controller -->|request mailer| Container
     Container -->|return new Mailer| Controller
 ```
 
@@ -33,9 +33,9 @@ graph TD
 ```mermaid
 graph TD
     Req[Incoming Request]
-    Global[Global Middleware (TrimStrings)]
-    Group[Group Middleware (Web/API)]
-    Route[Route Middleware (Auth)]
+    Global[Global Middleware TrimStrings]
+    Group[Group Middleware Web/API]
+    Route[Route Middleware Auth]
     Controller[Controller Logic]
     
     Req --> Global --> Group --> Route --> Controller
@@ -54,19 +54,19 @@ graph LR
 ### 5. Facade Root Resolution
 ```mermaid
 graph LR
-    Call[Cache::get()] --> Static[Facade::__callStatic]
-    Static --> Accessor[getFacadeAccessor() -> 'cache']
-    Accessor --> Resolve[Container::make('cache')]
+    Call[Cache get] --> Static[Facade __callStatic]
+    Static --> Accessor[getFacadeAccessor returns cache]
+    Accessor --> Resolve[Container make cache]
     Resolve --> Instance[RedisStore Instance]
-    Instance --> Method[->get()]
+    Instance --> Method[get]
 ```
 
 ### 6. Service Provider Lifecycle
 ```mermaid
 graph TD
-    Start[App Boot] --> Register[Register() Method]
+    Start[App Boot] --> Register[Register Method]
     Register --> Bind[Bind Services to Container]
-    Bind --> Boot[Boot() Method]
+    Bind --> Boot[Boot Method]
     Boot --> Listeners[Register Event Listeners]
     Boot --> Routes[Load Routes]
     Boot --> Views[Load Views]
@@ -98,10 +98,10 @@ graph LR
 ### 9. Eloquent Query Building
 ```mermaid
 graph LR
-    Model[User::where(...)] --> Builder[Eloquent Builder]
+    Model[User where] --> Builder[Eloquent Builder]
     Builder --> Query[Base Query Builder]
-    Query --> Grammar[Grammar (MySQL/PGSQL)]
-    Grammar --> SQL["SELECT * FROM users ..."]
+    Query --> Grammar[Grammar MySQL/PGSQL]
+    Grammar --> SQL[SELECT * FROM users ...]
     SQL --> PDO[PDO Statement]
 ```
 
@@ -109,7 +109,7 @@ graph LR
 ```mermaid
 graph TD
     DB[Database Row] -->|Array| Model[New Model Instance]
-    Model --> Casts[Apply Casts (JSON/Date)]
+    Model --> Casts[Apply Casts JSON/Date]
     Model --> Mutators[Apply Accessors]
     Model --> Relations[Hydrate Eager Loaded]
     Relations --> Final[Usable Object]
@@ -122,14 +122,14 @@ graph TD
     Table --> Check[Get Batch No.]
     Check --> Files[Scan migration files]
     Files --> Filter[Filter ran migrations]
-    Filter --> Run[Run up() method]
+    Filter --> Run[Run up method]
     Run --> Update[Update migrations table]
 ```
 
 ### 12. Seeder Factory Flow
 ```mermaid
 graph LR
-    Seeder -->|call| Factory[User::factory()]
+    Seeder -->|call| Factory[User factory]
     Factory -->|generate| Faker[Faker Data]
     Faker -->|attributes| Model
     Model -->|save| Database
@@ -163,9 +163,9 @@ erDiagram
 ### 15. Soft Deletes
 ```mermaid
 graph LR
-    Delete[User->delete()] --> SetCol[Set deleted_at = NOW()]
+    Delete[User delete] --> SetCol[Set deleted_at = NOW]
     SetCol --> Save[Save to DB]
-    Query[User::all()] --> Scope[Global Scope: whereNull('deleted_at')]
+    Query[User all] --> Scope[Global Scope whereNull deleted_at]
     Scope --> Result[Return Result]
 ```
 
@@ -214,10 +214,10 @@ graph LR
 ### 20. Gate/Policy Authorization
 ```mermaid
 graph TD
-    User -->|can 'update', post| Gate
+    User[User Request] -->|can update post| Gate[Gate Check]
     Gate --> Policy[PostPolicy update]
     Policy --> Logic[User id == Post user_id?]
-    Logic -->|True| Allow
+    Logic -->|True| Allow[Allow Access]
     Logic -->|False| Deny[403 Forbidden]
 ```
 
@@ -335,63 +335,63 @@ graph LR
 ### 32. Decorator Pattern
 ```mermaid
 graph TD
-    Req --> Decorator1[LogRequest]
+    Req[Request] --> Decorator1[LogRequest]
     Decorator1 --> Decorator2[CacheResponse]
     Decorator2 --> Core[Core Logic]
     Core --> Decorator2
     Decorator2 --> Decorator1
-    Decorator1 --> Resp
+    Decorator1 --> Resp[Response]
 ```
 
 ### 33. Observer Pattern
 ```mermaid
 graph LR
-    Subject[User Model] -->|Event| Observer1[UserObserver:created]
-    Subject -->|Event| Observer2[UserObserver:updated]
-    Subject -->|Event| Observer3[UserObserver:deleted]
+    Subject[User Model] -->|Event| Observer1[UserObserver created]
+    Subject -->|Event| Observer2[UserObserver updated]
+    Subject -->|Event| Observer3[UserObserver deleted]
 ```
 
 ### 34. Strategy Pattern
 ```mermaid
 graph TD
     Context[PaymentService] -->|Interface| Strategy[PaymentGateway]
-    Strategy --> Stripe
-    Strategy --> PayPal
-    Strategy --> BankTransfer
+    Strategy --> Stripe[Stripe]
+    Strategy --> PayPal[PayPal]
+    Strategy --> Bank[Bank Transfer]
 ```
 
 ### 35. Adapter Pattern
 ```mermaid
 graph LR
-    App -->|Call| Interface[StorageInterface]
-    Interface -->|Adapter| S3Adapter
-    Interface -->|Adapter| LocalAdapter
-    S3Adapter --> AWS
-    LocalAdapter --> Disk
+    App[App Code] -->|Call| Interface[StorageInterface]
+    Interface -->|Adapter| S3Adapter[S3 Adapter]
+    Interface -->|Adapter| LocalAdapter[Local Adapter]
+    S3Adapter --> AWS[AWS S3]
+    LocalAdapter --> Disk[Local Disk]
 ```
 
 ### 36. Chain of Responsibility (Middleware)
 ```mermaid
 graph LR
-    Req --> Step1[CheckMaintenance]
+    Req[Request] --> Step1[CheckMaintenance]
     Step1 --> Step2[CheckBan]
     Step2 --> Step3[CheckAuth]
-    Step3 --> App
+    Step3 --> App[Application Core]
 ```
 
 ### 37. Singleton (Container)
 ```mermaid
 graph TD
-    Call1[app 'db'] --> Instance
-    Call2[app 'db'] --> Instance
-    Call3[app 'db'] --> Instance
+    Call1[app db] --> Instance[Shared Instance]
+    Call2[app db] --> Instance
+    Call3[app db] --> Instance
     Note[One Object in Memory]
 ```
 
 ### 38. Factory Method
 ```mermaid
 graph LR
-    Code -->|Notification send| Manager[ChannelManager]
+    Code[User Code] -->|Notification send| Manager[ChannelManager]
     Manager -->|createDriver| Driver[SpecificDriver]
 ```
 

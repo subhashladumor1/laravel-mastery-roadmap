@@ -6,15 +6,15 @@ It's just a static method (`__callStatic`) on a class (`Illuminate\Support\Facad
 
 ```mermaid
 graph TD
-    UserCode[User: Auth::check()] --> Facade[Auth Facade]
-    Facade --> CallStatic[__callStatic()]
+    UserCode[User Auth Check] --> Facade[Auth Facade]
+    Facade --> CallStatic[__callStatic]
     
     subgraph Facade Internal
         CallStatic --> Accessor[getFacadeAccessor]
         Accessor -->|returns| Binding[auth]
         
         Binding -->|resolve| Container[Service Container]
-        Container -->|make('auth')| Instance[AuthManager (Singletone)]
+        Container -->|make auth| Instance[AuthManager Singleton]
     end
     
     Instance -->|check| Method[AuthManager check]

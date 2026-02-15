@@ -131,10 +131,10 @@ graph TD
 Handle millions of requests.
 ```mermaid
 graph LR
-    Perf --> Octane[Laravel Octane (Swoole)]
+    Perf --> Octane[Laravel Octane Swoole]
     Perf --> Cache[Redis Caching Strategies]
     Perf --> DB_Scale[Read Replicas & Sharding]
-    Perf --> Search[Meilisearch / ElasticSearch]
+    Perf --> Search[Meilisearch ElasticSearch]
 ```
 
 **Projects to Build:**

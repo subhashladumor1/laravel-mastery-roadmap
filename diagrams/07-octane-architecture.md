@@ -10,14 +10,14 @@ Each request kills the application. Slowest.
 
 ```mermaid
 graph TD
-    Browser[Browser Request /user] --> Nginx
+    Browser[Browser Request user] --> Nginx
     Nginx --> PHP[Spawn PHP Process]
     PHP --> Boot[Bootstrap Laravel]
     Boot --> Config[Parse Config]
     Config --> Routes[Register Routes]
     Routes --> Providers[Register Providers]
     Providers --> Handle[Handle Request]
-    Handle --> Kill[Kill Process (GC)]
+    Handle --> Kill[Kill Process GC]
 ```
 
 > **Bottleneck**: Bootstrapping framework takes 30-50ms PER REQUEST.
@@ -29,7 +29,7 @@ The application stays in RAM.
 
 ```mermaid
 graph TD
-    Start[Worker Starts php artisan octane:start] --> Boot[Bootstrap Laravel ONCE]
+    Start[Worker Starts octane start] --> Boot[Bootstrap Laravel ONCE]
     Boot --> RAM[Keep in Memory Swoole Worker]
     
     RAM --> Loop{Request Loop}
@@ -53,7 +53,7 @@ Wait, globals leak!
 ```mermaid
 graph LR
     Worker --> Request[Handle Request]
-    Request --> Static[Static Property count++]
+    Request --> Static[Static Property count]
     Request --> Single[Singleton Service]
     
     Response[End Request] --> Clean[Run Terminating Callbacks]
