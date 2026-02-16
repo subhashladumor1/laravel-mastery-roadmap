@@ -1,4 +1,4 @@
-# 🚀 Laravel Mastery Roadmap (Laravel 12+)
+# 🚀 Laravel Mastery Roadmap (Laravel 12)
 
 > **"From Junior to Principal Architect."**
 > The complete Laravel 12+ Roadmap. From Junior to Architect. Covers **Advanced Architecture**, **AI Agents** (`laravel/ai`), **300+ Interview Questions**, and **System Design**.
